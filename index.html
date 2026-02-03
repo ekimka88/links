@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Виталий Екименко — HoReCa</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body{
+      background:#0f0f0f;
+      color:#f2f2f2;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      line-height:1.5;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{ max-width:420px; width:100%; padding:32px 20px 70px; }
+    h1{ font-size:22px; font-weight:650; margin-bottom:12px; letter-spacing:-.2px; }
+    .subtitle{ font-size:14px; color:#b5b5b5; margin-bottom:22px; }
+    .divider{ height:1px; background:#262626; margin:22px 0; }
+    .section-title{ font-size:12px; text-transform:uppercase; letter-spacing:.14em; color:#8f8f8f; margin-bottom:10px; }
+    .btns{ display:flex; flex-direction:column; gap:12px; }
+    .btn{
+      display:block;
+      padding:15px 16px;
+      border:1px solid #2b2b2b;
+      border-radius:14px;
+      text-decoration:none;
+      color:#fff;
+      transition:all .18s ease;
+      background:#121212;
+    }
+    .btn:hover{ border-color:#fff; background:#151515; transform: translateY(-1px); }
+    .btn strong{ display:block; font-size:16px; margin-bottom:4px; }
+    .btn span{ font-size:13px; color:#a0a0a0; }
+    .text{ font-size:14px; color:#cfcfcf; margin-top:12px; }
+    .note{ font-size:13px; color:#9a9a9a; margin-top:10px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <h1>Как бар перестаёт быть болью</h1>
+
+    <div class="subtitle">
+      HoReCa • бизнес • команды<br>
+      Из хаоса → в систему и прибыль
+    </div>
+
+    <!-- ПРОЕКТЫ -->
+    <div class="section-title">Проекты</div>
+    <div class="btns">
+      <a class="btn" href="https://dcwp.ru" target="_blank" rel="noopener">
+        <strong>Dry&Wet</strong>
+        <span>сайт проекта</span>
+      </a>
+
+      <a class="btn" href="https://dvoyka.ru" target="_blank" rel="noopener">
+        <strong>«ДВОЙКА»</strong>
+        <span>сайт проекта</span>
+      </a>
+
+      <a class="btn" href="https://horeca.otechestvomebel.ru" target="_blank" rel="noopener">
+        <strong>Отечество</strong>
+        <span>мебель для HoReCa и бизнеса</span>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ПОДКАСТЫ / YOUTUBE -->
+    <div class="section-title">Подкасты и видео</div>
+    <div class="btns">
+      <a class="btn" href="https://www.youtube.com/watch?v=mJEVoEEW0pQ" target="_blank" rel="noopener">
+        <strong>YouTube — большое интервью</strong>
+        <span>про проекты, команду и систему</span>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- СВЯЗЬ -->
+    <div class="section-title">Связь</div>
+    <div class="btns">
+      <a class="btn" href="https://t.me/ekimka" target="_blank" rel="noopener">
+        <strong>Telegram</strong>
+        <span>@ekimka</span>
+      </a>
+
+      <a class="btn" href="https://www.instagram.com/vitaly_ekimenko" target="_blank" rel="noopener">
+        <strong>Instagram</strong>
+        <span>профиль</span>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ПУБЛИКАЦИИ -->
+    <div class="section-title">Публикации (выборка)</div>
+    <div class="btns">
+      <a class="btn" href="https://m.sobaka.ru/bars/heroes/182553" target="_blank" rel="noopener">
+        <strong>Sobaka.ru</strong>
+        <span>материал обо мне</span>
+      </a>
+
+      <a class="btn" href="https://ru.inshaker.com/trends/znaniya/vitaliy-ekimenko-vremya-samyy-tsennyy-nash-resurs-kotorogo-postoyanno-ne-hvataet" target="_blank" rel="noopener">
+        <strong>Inshaker</strong>
+        <span>про время как ключевой ресурс</span>
+      </a>
+
+      <a class="btn" href="https://moskvichmag.ru/tag/vitalij-ekimenko/" target="_blank" rel="noopener">
+        <strong>Moskvich Mag</strong>
+        <span>все материалы</span>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="text">
+      Без мотивационного шума и глянца.<br>
+      Только опыт, решения и принципы, которые выдерживают рынок.
+    </div>
+
+    <div class="note">
+      © <span id="y"></span> Vitaly Ekimenko
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
