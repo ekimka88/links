@@ -1,172 +1,244 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitaly Ekimenko — HoReCa</title>
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0d0d0d;
-    color: #ffffff;
-    line-height: 1.6;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitaliy Ekimenko — HoReCa</title>
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --card:#141416;
+      --border:rgba(255,255,255,.08);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
 
-h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
-}
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
 
-.subtitle {
-    color: #999;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
+    .container{
+      max-width:760px;
+      margin:0 auto;
+      padding:42px 18px 64px;
+    }
 
-.section {
-    margin-bottom: 60px;
-}
+    h1{
+      font-size:32px;
+      margin:0 0 10px;
+      letter-spacing:-.02em;
+    }
 
-.section h2 {
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #666;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-}
+    .subtitle{
+      font-size:16px;
+      color:var(--muted);
+      margin:0 0 24px;
+    }
 
-.card {
-    border: 1px solid #222;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    transition: 0.2s;
-}
+    .tagline{
+      margin:0 0 28px;
+      color:var(--muted2);
+      font-size:15px;
+    }
 
-.card:hover {
-    border-color: #444;
-}
+    .section{
+      margin-top:30px;
+    }
 
-.card h3 {
-    margin: 0 0 8px 0;
-}
+    .section h2{
+      margin:0 0 14px;
+      font-size:13px;
+      letter-spacing:.22em;
+      color:rgba(255,255,255,.45);
+      text-transform:uppercase;
+    }
 
-.card p {
-    color: #aaa;
-    margin-bottom: 15px;
-}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 16px;
+      margin:14px 0;
+      box-shadow:var(--shadow);
+    }
 
-.links a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 14px;
-}
+    .card h3{
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:-.01em;
+    }
 
-.links a:hover {
-    text-decoration: underline;
-}
+    .card p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-.footer {
-    margin-top: 80px;
-    font-size: 14px;
-    color: #555;
-}
-</style>
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .links a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+      transition:transform .08s ease, background .12s ease, border-color .12s ease;
+    }
+
+    .links a:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.07);
+      border-color:rgba(255,255,255,.22);
+    }
+
+    .footer{
+      margin-top:34px;
+      color:rgba(255,255,255,.55);
+      font-size:14px;
+    }
+
+    .copyright{
+      margin-top:10px;
+      color:rgba(255,255,255,.35);
+      font-size:12px;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <h1>Как бар перестаёт быть болью</h1>
+    <p class="subtitle">HoReCa • бизнес • команды</p>
+    <p class="tagline">Из хаоса → в систему и прибыль</p>
 
-<div class="container">
+    <div class="section">
+      <h2>Проекты</h2>
 
-<h1>Как бар перестаёт быть болью</h1>
-<div class="subtitle">
-HoReCa • бизнес • команды<br>
-Из хаоса → в систему и прибыль
-</div>
+      <div class="card">
+        <h3>Dry&Wet</h3>
+        <p>Коктейльный бар. «Место встречи».</p>
+        <div class="links">
+          <a href="https://dcwp.ru/" target="_blank">Сайт</a>
+          <a href="https://www.instagram.com/drywet.moscow?igsh=MXRkdGt6aDRtd2xwNA==" target="_blank">Instagram</a>
+        </div>
+      </div>
 
-<div class="section">
-<p>
-Предприниматель в HoReCa. Создатель Dry&Wet и «ДВОЙКА».  
-Строю системы, которые выдерживают рынок.  
-Без мотивационного шума — только практика, цифры и решения.
-</p>
-</div>
+      <div class="card">
+        <h3>«ДВОЙКА»</h3>
+        <p>Коктейльная шотошная. Рулетка шотов и хулиганский стиль.</p>
+        <div class="links">
+          <a href="https://www.instagram.com/dvoyka.moscow?igsh=MW44Ynlxb2dxcWlkdA==" target="_blank">Instagram</a>
+        </div>
+      </div>
 
-<div class="section">
-<h2>Проекты</h2>
+      <div class="card">
+        <h3>Отечество</h3>
+        <p>Мебель для HoReCa и бизнеса.</p>
+        <div class="links">
+          <a href="https://www.instagram.com/mebel_otechestvo?igsh=MWt0c21ka3g3dzNhYQ==" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
 
-<div class="card">
-<h3>Dry&Wet</h3>
-<p>Коктейльный бар. Системная модель управления, высокая повторяемость гостей, масштабируемая концепция.</p>
-<div class="links">
-<a href="https://drywet.ru" target="_blank">Сайт</a>
-<a href="https://www.instagram.com/drywet.moscow" target="_blank">Instagram</a>
-</div>
-</div>
+    <div class="section">
+      <h2>Интервью и видео</h2>
 
-<div class="card">
-<h3>«ДВОЙКА»</h3>
-<p>Первая коктейльная шотошная. Интерактивная модель продаж и высокая маржинальность.</p>
-<div class="links">
-<a href="#" target="_blank">Сайт</a>
-<a href="https://www.instagram.com/dvoyka.moscow" target="_blank">Instagram</a>
-</div>
-</div>
+      <div class="card">
+        <h3>YouTube — большое интервью</h3>
+        <p>Про проекты, команду и систему управления.</p>
+        <div class="links">
+          <a href="https://www.youtube.com/watch?v=mJEVoEEW0pQ" target="_blank">Смотреть</a>
+        </div>
+      </div>
 
-<div class="card">
-<h3>Отечество</h3>
-<p>Мебель для HoReCa и бизнеса. Пространства, которые увеличивают средний чек и выдерживают эксплуатацию.</p>
-<div class="links">
-<a href="#" target="_blank">Сайт</a>
-<a href="https://www.instagram.com/mebel_otechestvo" target="_blank">Instagram</a>
-</div>
-</div>
+      <div class="card">
+        <h3>T-Ж (Тиньков Бизнес)</h3>
+        <p>«Не открывай бар» — честный разбор рисков HoReCa.</p>
+        <div class="links">
+          <a href="https://t-j.ru/list/ne-otkrivai-bar/" target="_blank">Читать</a>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <div class="section">
+      <h2>Публикации</h2>
 
-<div class="section">
-<h2>Подкасты и видео</h2>
+      <div class="card">
+        <h3>Sobaka.ru</h3>
+        <p>Материал обо мне.</p>
+        <div class="links">
+          <a href="https://m.sobaka.ru/bars/heroes/182553" target="_blank">Читать</a>
+        </div>
+      </div>
 
-<div class="card">
-<h3>YouTube — большое интервью</h3>
-<p>Про проекты, команду и систему управления.</p>
-</div>
+      <div class="card">
+        <h3>Inshaker</h3>
+        <p>Про время как ключевой ресурс.</p>
+        <div class="links">
+          <a href="https://ru.inshaker.com/trends/znaniya/vitaliy-ekimenko-vremya-samyy-tsennyy-nash-resurs-kotorogo-postoyanno-ne-hvataet" target="_blank">Читать</a>
+        </div>
+      </div>
 
-<div class="card">
-<h3>T-Ж (Тиньков Бизнес)</h3>
-<p>«Не открывай бар» — честный разбор рисков и ошибок предпринимателя.</p>
-<div class="links">
-<a href="https://t-j.ru/list/ne-otkrivai-bar/" target="_blank">Читать интервью</a>
-</div>
-</div>
+      <div class="card">
+        <h3>Moskvich Mag</h3>
+        <p>Все материалы (подборка).</p>
+        <div class="links">
+          <a href="https://moskvichmag.ru/tag/vitalij-ekimenko/" target="_blank">Читать</a>
+        </div>
+      </div>
 
-</div>
+      <div class="card">
+        <h3>Buro 24/7</h3>
+        <p>Материал о проектах и подходе.</p>
+        <div class="links">
+          <a href="https://m.buro247.ru/amp/89650" target="_blank">Читать</a>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-<h2>Связь</h2>
+    <div class="section">
+      <h2>Связь</h2>
 
-<div class="card">
-<h3>Telegram</h3>
-<div class="links">
-<a href="https://t.me/ekimka" target="_blank">@ekimka</a>
-</div>
-</div>
+      <div class="card">
+        <h3>Telegram</h3>
+        <p>@ekimka</p>
+        <div class="links">
+          <a href="https://t.me/ekimka" target="_blank">Написать</a>
+        </div>
+      </div>
 
-</div>
+      <div class="card">
+        <h3>Instagram</h3>
+        <p>Профиль</p>
+        <div class="links">
+          <a href="https://www.instagram.com/vitaly_ekimenko/" target="_blank">Открыть</a>
+        </div>
+      </div>
+    </div>
 
-<div class="footer">
-© 2026 Vitaly Ekimenko  
-Без мотивационного шума и глянца. Только опыт, решения и принципы, которые выдерживают рынок.
-</div>
-
-</div>
-
+    <div class="footer">
+      Без мотивационного шума и глянца.<br/>
+      Только опыт, решения и принципы, которые выдерживают рынок.
+      <div class="copyright">© 2026 Vitaliy Ekimenko</div>
+    </div>
+  </div>
 </body>
 </html>
