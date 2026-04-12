@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vitaliy Ekimenko — HoReCa</title>
+  <title>Vitaliy Ekimenko — барный бизнес</title>
 
   <style>
     :root{
@@ -11,54 +11,99 @@
       --card:#141416;
       --border:rgba(255,255,255,.08);
       --text:#ffffff;
-      --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.55);
+      --muted:rgba(255,255,255,.78);
+      --muted2:rgba(255,255,255,.56);
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
+      --accent:rgba(255,255,255,.06);
     }
 
     *{ box-sizing:border-box; }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
       background:var(--bg);
       color:var(--text);
-      line-height:1.35;
+      line-height:1.4;
     }
 
     .container{
-      max-width:760px;
+      max-width:820px;
       margin:0 auto;
-      padding:42px 18px 64px;
+      padding:42px 18px 72px;
+    }
+
+    .hero{
+      margin-bottom:34px;
     }
 
     h1{
-      font-size:32px;
-      margin:0 0 10px;
-      letter-spacing:-.02em;
+      font-size:42px;
+      line-height:1.04;
+      margin:0 0 12px;
+      letter-spacing:-.03em;
     }
 
     .subtitle{
-      font-size:16px;
+      font-size:18px;
       color:var(--muted);
-      margin:0 0 24px;
+      margin:0 0 10px;
     }
 
     .tagline{
-      margin:0 0 28px;
+      margin:0 0 20px;
       color:var(--muted2);
       font-size:15px;
     }
 
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+      transition:transform .08s ease, background .12s ease, border-color .12s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.07);
+      border-color:rgba(255,255,255,.22);
+    }
+
+    .btn.primary{
+      background:#fff;
+      color:#111;
+      border-color:#fff;
+      font-weight:600;
+    }
+
     .section{
-      margin-top:30px;
+      margin-top:34px;
     }
 
     .section h2{
       margin:0 0 14px;
       font-size:13px;
       letter-spacing:.22em;
-      color:rgba(255,255,255,.45);
+      color:rgba(255,255,255,.42);
       text-transform:uppercase;
     }
 
@@ -72,15 +117,44 @@
     }
 
     .card h3{
-      margin:0 0 6px;
-      font-size:20px;
-      letter-spacing:-.01em;
+      margin:0 0 8px;
+      font-size:22px;
+      letter-spacing:-.02em;
     }
 
     .card p{
       margin:0 0 12px;
       color:var(--muted);
-      font-size:14px;
+      font-size:15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .list{
+      display:grid;
+      gap:10px;
+      margin:0;
+      padding:0;
+    }
+
+    .list-item{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px 14px;
+      color:var(--muted);
+      font-size:15px;
+      box-shadow:var(--shadow);
+    }
+
+    .fact{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
     }
 
     .links{
@@ -109,9 +183,14 @@
       border-color:rgba(255,255,255,.22);
     }
 
+    .small{
+      font-size:14px;
+      color:var(--muted2);
+    }
+
     .footer{
-      margin-top:34px;
-      color:rgba(255,255,255,.55);
+      margin-top:42px;
+      color:rgba(255,255,255,.56);
       font-size:14px;
     }
 
@@ -120,117 +199,242 @@
       color:rgba(255,255,255,.35);
       font-size:12px;
     }
+
+    @media (max-width:700px){
+      h1{
+        font-size:34px;
+      }
+
+      .subtitle{
+        font-size:17px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Как бар перестаёт быть болью</h1>
-    <p class="subtitle">HoReCa • бизнес • команды</p>
-    <p class="tagline">Из хаоса → в систему и прибыль</p>
 
-    <div class="section">
+    <section class="hero">
+      <h1>Как на самом деле устроен барный бизнес</h1>
+      <p class="subtitle">Кризисы • деньги • команда • система</p>
+      <p class="tagline">Реальные разборы, проекты и опыт без мотивационного шума.</p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="https://t.me/ekimka" target="_blank" rel="noopener noreferrer">Обсудить задачу</a>
+        <a class="btn" href="#projects">Смотреть проекты</a>
+        <a class="btn" href="#media">Интервью и публикации</a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>Кто я</h2>
+      <div class="card">
+        <p>
+          Бармен → бар-менеджер → ресторатор → предприниматель.
+          Потерял два проекта, пережил кризисы, собрал систему и вышел из операционки.
+          Запустил Dry&Wet, провёл его через пандемию и 2022 год.
+          Создал ДВОЙКУ уже как спроектированный бизнес — не на интуиции, а на системе.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="mindset">
+      <h2>Как я думаю</h2>
+      <div class="grid">
+        <div class="list-item">Мир строится изнутри наружу: ты → команда → атмосфера → гости.</div>
+        <div class="list-item">Команда важнее интерьера и концепции.</div>
+        <div class="list-item">Система важнее таланта.</div>
+        <div class="list-item">Кризис — экзамен предпринимателя.</div>
+        <div class="list-item">Без цифр бизнес — казино.</div>
+        <div class="list-item">Владелец становится узким горлышком, если не делегирует.</div>
+      </div>
+    </section>
+
+    <section class="section" id="value">
+      <h2>Чем я полезен</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Разбор бизнеса</h3>
+          <p>Помогаю увидеть, где бизнес держится на владельце, а где уже есть система.</p>
+        </div>
+
+        <div class="card">
+          <h3>Выход из операционки</h3>
+          <p>Помогаю владельцам выйти из ручного управления без потери контроля.</p>
+        </div>
+
+        <div class="card">
+          <h3>Система управления</h3>
+          <p>Собираю ритм управления, роли, цифры и контроль вместо хаоса.</p>
+        </div>
+
+        <div class="card">
+          <h3>Команда</h3>
+          <p>Строю сильные команды вместо текучки, случайных людей и постоянных пожаров.</p>
+        </div>
+
+        <div class="card">
+          <h3>Кризисы</h3>
+          <p>Помогаю пережить сложный период без паники, слепых решений и развала системы.</p>
+        </div>
+
+        <div class="card">
+          <h3>Финансы</h3>
+          <p>Настраиваю финансовую модель, чтобы убрать кассовые разрывы и управлять деньгами, а не надеяться.</p>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="https://t.me/ekimka" target="_blank" rel="noopener noreferrer">Обсудить задачу</a>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
       <h2>Проекты</h2>
 
       <div class="card">
         <h3>Dry&Wet</h3>
-        <p>Коктейльный бар. «Место встречи».</p>
+        <p>Коктейльный бар. Место встречи, которое прошло через кризисы и стало устойчивой системой.</p>
         <div class="links">
-          <a href="https://dcwp.ru/" target="_blank">Сайт</a>
-          <a href="https://www.instagram.com/drywet.moscow?igsh=MXRkdGt6aDRtd2xwNA==" target="_blank">Instagram</a>
+          <a href="https://dcwp.ru/" target="_blank" rel="noopener noreferrer">Сайт</a>
+          <a href="https://www.instagram.com/drywet.moscow?igsh=MXRkdGt6aDRtd2xwNA==" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>
 
       <div class="card">
-        <h3>«ДВОЙКА»</h3>
-        <p>Коктейльная шотошная. Рулетка шотов и хулиганский стиль.</p>
+        <h3>ДВОЙКА</h3>
+        <p>Коктейльная шотошная. Хулиганский формат, который был создан уже как спроектированный бизнес.</p>
         <div class="links">
-          <a href="https://dvoyka.ru" target="_blank">Сайт</a>
-          <a href="https://www.instagram.com/dvoyka.moscow?igsh=MW44Ynlxb2dxcWlkdA==" target="_blank">Instagram</a>
+          <a href="https://dvoyka.ru" target="_blank" rel="noopener noreferrer">Сайт</a>
+          <a href="https://www.instagram.com/dvoyka.moscow?igsh=MW44Ynlxb2dxcWlkdA==" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>
 
       <div class="card">
         <h3>Отечество</h3>
-        <p>Мебель для HoReCa и бизнеса.</p>
+        <p>Мебельное ателье для бизнеса. Делаем не просто мебель, а среду, которая влияет на выручку, сервис и восприятие бренда.</p>
         <div class="links">
-          <a href="https://horeca.otechestvomebel.ru" target="_blank">Сайт</a>
-          <a href="https://www.instagram.com/mebel_otechestvo?igsh=MWt0c21ka3g3dzNhYQ==" target="_blank">Instagram</a>
+          <a href="https://horeca.otechestvomebel.ru" target="_blank" rel="noopener noreferrer">Сайт</a>
+          <a href="https://www.instagram.com/mebel_otechestvo?igsh=MWt0c21ka3g3dzNhYQ==" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="facts">
+      <h2>Факты</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Dry&Wet</h3>
+          <p class="fact">7 лет на рынке.</p>
+          <p class="fact">Пережил пандемию и кризис 2022 года.</p>
+          <p class="fact">Сформировал сильное комьюнити и стал «местом встречи».</p>
+        </div>
+
+        <div class="card">
+          <h3>ДВОЙКА</h3>
+          <p class="fact">Запущена как система, а не как интуитивный проект.</p>
+          <p class="fact">Понятный продукт и стабильная выручка с самого старта.</p>
+        </div>
+
+        <div class="card">
+          <h3>Команда</h3>
+          <p class="fact">Вырастил 100+ специалистов в индустрии.</p>
+          <p class="fact">Через проекты сформировалась сильная внутренняя культура.</p>
+        </div>
+
+        <div class="card">
+          <h3>Кризисы</h3>
+          <p class="fact">Кризис показывает, есть ли у бизнеса система.</p>
+          <p class="fact">Если владелец паникует — бизнес падает быстрее рынка.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="for-whom">
+      <h2>Для кого</h2>
+      <div class="grid">
+        <div class="list-item">Владельцы баров и ресторанов.</div>
+        <div class="list-item">Предприниматели, которые застряли в операционке.</div>
+        <div class="list-item">Те, у кого есть выручка, но нет системы.</div>
+        <div class="list-item">Те, кто хочет открыть бар и не облажаться на старте.</div>
+      </div>
+    </section>
+
+    <section class="section" id="media">
       <h2>Интервью и видео</h2>
 
       <div class="card">
         <h3>YouTube — большое интервью</h3>
         <p>Про проекты, команду и систему управления.</p>
         <div class="links">
-          <a href="https://www.youtube.com/watch?v=mJEVoEEW0pQ" target="_blank">Смотреть</a>
+          <a href="https://www.youtube.com/watch?v=mJEVoEEW0pQ" target="_blank" rel="noopener noreferrer">Смотреть интервью</a>
         </div>
       </div>
 
       <div class="card">
         <h3>T-Ж (Тиньков Бизнес)</h3>
-        <p>«Не открывай бар» — честный разбор рисков HoReCa.</p>
+        <p>«Не открывай бар» — честный разбор рисков ресторанного бизнеса.</p>
         <div class="links">
-          <a href="https://t-j.ru/list/ne-otkrivai-bar/" target="_blank">Читать</a>
+          <a href="https://t-j.ru/list/ne-otkrivai-bar/" target="_blank" rel="noopener noreferrer">Читать разбор</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <h2>Публикации</h2>
 
       <div class="card">
         <h3>Sobaka.ru</h3>
-        <p>Материал обо мне.</p>
+        <p>Материал обо мне и моём пути.</p>
         <div class="links">
-          <a href="https://m.sobaka.ru/bars/heroes/182553" target="_blank">Читать</a>
+          <a href="https://m.sobaka.ru/bars/heroes/182553" target="_blank" rel="noopener noreferrer">Читать материал</a>
         </div>
       </div>
 
       <div class="card">
         <h3>Inshaker</h3>
-        <p>Про время как ключевой ресурс.</p>
+        <p>Про время как ключевой ресурс предпринимателя.</p>
         <div class="links">
-          <a href="https://ru.inshaker.com/trends/znaniya/vitaliy-ekimenko-vremya-samyy-tsennyy-nash-resurs-kotorogo-postoyanno-ne-hvataet" target="_blank">Читать</a>
+          <a href="https://ru.inshaker.com/trends/znaniya/vitaliy-ekimenko-vremya-samyy-tsennyy-nash-resurs-kotorogo-postoyanno-ne-hvataet" target="_blank" rel="noopener noreferrer">Читать материал</a>
         </div>
       </div>
 
       <div class="card">
         <h3>Moskvich Mag</h3>
-        <p>Подборка материалов.</p>
+        <p>Подборка материалов и упоминаний.</p>
         <div class="links">
-          <a href="https://moskvichmag.ru/tag/vitalij-ekimenko/" target="_blank">Читать</a>
+          <a href="https://moskvichmag.ru/tag/vitalij-ekimenko/" target="_blank" rel="noopener noreferrer">Смотреть подборку</a>
         </div>
       </div>
 
       <div class="card">
         <h3>Buro 24/7</h3>
-        <p>Материал о проектах и подходе.</p>
+        <p>Материал о проектах и подходе к бизнесу.</p>
         <div class="links">
-          <a href="https://m.buro247.ru/amp/89650" target="_blank">Читать</a>
+          <a href="https://m.buro247.ru/amp/89650" target="_blank" rel="noopener noreferrer">Читать материал</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="contact">
       <h2>Связь</h2>
 
       <div class="card">
         <h3>Telegram</h3>
         <p>@ekimka</p>
         <div class="links">
-          <a href="https://t.me/ekimka" target="_blank">Написать</a>
+          <a href="https://t.me/ekimka" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="footer">
-      Без мотивационного шума и глянца.<br/>
-      Только опыт, решения и принципы, которые выдерживают рынок.
+      Если у тебя есть бар или ты только собираешься его открыть — лучше разобраться в системе до того, как начнутся проблемы.
       <div class="copyright">© 2026 Vitaliy Ekimenko</div>
     </div>
   </div>
