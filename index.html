@@ -619,7 +619,7 @@
 <input id="utm-term" name="UTM term" type="hidden"/>
 <input id="timezone" name="Часовой пояс" type="hidden"/>
 <input id="device" name="Устройство" type="hidden"/>
-<input id="form-version" name="Версия формы" type="hidden" value="2.0 — email"/>
+<input id="form-version" name="Версия формы" type="hidden" value="3.0 — email + telegram"/>
 
 <div class="field"><label for="name">Имя</label><input autocomplete="name" id="name" name="Имя" placeholder="Как к вам обращаться" required="" type="text"/></div>
 <div class="field"><label for="contact">Telegram или телефон</label><input id="contact" name="Контакт (Telegram или телефон)" placeholder="@username или +7…" required="" type="text"/></div>
@@ -636,7 +636,7 @@
 <span class="button-loader" hidden="" aria-hidden="true"></span>
 </button>
 <div class="form-status" id="form-status" hidden="" role="status" aria-live="polite"></div>
-<p class="form-trust">Данные используются только для связи по заявке. В письмо также автоматически добавятся источник перехода и рекламные метки, чтобы заявки не терялись.</p>
+<p class="form-trust">Данные используются только для связи по заявке. Заявка защищённо отправляется на почту и дублируется в Telegram; источник перехода и рекламные метки сохраняются автоматически.</p>
 </form>
 </div>
 </div></section>
@@ -794,22 +794,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeoutId = window.setTimeout(() => controller.abort(), 18000);
 
     try {
-      const response = await fetch(form.dataset.ajaxEndpoint, {
+      const emailRequest = fetch(form.dataset.ajaxEndpoint, {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },
         signal: controller.signal
+      }).then(async (response) => {
+        let payload = {};
+        try {
+          payload = await response.json();
+        } catch (_) {
+          payload = {};
+        }
+
+        if (!response.ok || payload.success === false || payload.success === 'false') {
+          throw new Error(payload.message || `Email HTTP ${response.status}`);
+        }
+
+        return { channel: 'email', ok: true };
       });
 
-      let payload = {};
-      try {
-        payload = await response.json();
-      } catch (_) {
-        payload = {};
-      }
+      const telegramRequest = fetch('https://ekimenko-leads.ekimka-vitalik.workers.dev/webhook', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+        signal: controller.signal
+      }).then(async (response) => {
+        let payload = {};
+        try {
+          payload = await response.json();
+        } catch (_) {
+          payload = {};
+        }
 
-      if (!response.ok || payload.success === false || payload.success === 'false') {
-        throw new Error(payload.message || `HTTP ${response.status}`);
+        if (!response.ok || payload.ok === false) {
+          throw new Error(payload.error || `Telegram HTTP ${response.status}`);
+        }
+
+        return { channel: 'telegram', ok: true };
+      });
+
+      const results = await Promise.allSettled([emailRequest, telegramRequest]);
+      const deliveredChannels = results
+        .filter((result) => result.status === 'fulfilled')
+        .map((result) => result.value.channel);
+
+      results.forEach((result) => {
+        if (result.status === 'rejected') {
+          console.error('Lead delivery channel failed:', result.reason);
+        }
+      });
+
+      if (!deliveredChannels.length) {
+        throw new Error('Заявка не доставлена ни по одному каналу.');
       }
 
       form.reset();
