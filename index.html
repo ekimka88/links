@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -189,18 +190,78 @@
       .process,.contact-grid{grid-template-columns:1fr}
       .case{min-height:290px}
     }
-  
+
     [hidden]{display:none!important}
-    .telegram-notice{
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:12px;
-      background:rgba(208,139,69,.12);
-      border:1px solid rgba(208,139,69,.32);
-      color:rgba(244,240,235,.88);
-      font-size:13px;
+    .form-honeypot{
+      position:absolute!important;
+      left:-9999px!important;
+      width:1px!important;
+      height:1px!important;
+      opacity:0!important;
+      pointer-events:none!important;
+    }
+    .form-status{
+      margin-top:2px;
+      padding:14px 15px;
+      border-radius:13px;
+      border:1px solid var(--line);
+      font-size:14px;
       line-height:1.45;
     }
+    .form-status[data-state="success"]{
+      background:rgba(70,145,92,.13);
+      border-color:rgba(91,184,117,.35);
+      color:#c7f0d1;
+    }
+    .form-status[data-state="error"]{
+      background:rgba(189,48,48,.13);
+      border-color:rgba(214,75,75,.38);
+      color:#ffc1c1;
+    }
+    .form-status a{
+      color:inherit;
+      font-weight:800;
+    }
+    .submit-btn{
+      position:relative;
+      gap:10px;
+      overflow:hidden;
+    }
+    .submit-btn[disabled]{
+      cursor:wait;
+      opacity:.78;
+      transform:none;
+      filter:none;
+    }
+    .button-loader{
+      width:17px;
+      height:17px;
+      border:2px solid rgba(9,9,9,.28);
+      border-top-color:#090909;
+      border-radius:50%;
+      animation:form-spin .7s linear infinite;
+    }
+    @keyframes form-spin{to{transform:rotate(360deg)}}
+    .form-trust{
+      display:flex;
+      align-items:flex-start;
+      gap:9px;
+      margin-top:2px;
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.45;
+    }
+    .form-trust:before{
+      content:"";
+      flex:0 0 7px;
+      width:7px;
+      height:7px;
+      margin-top:5px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(208,139,69,.10);
+    }
+
     .case-status{
       display:inline-flex;
       align-items:center;
@@ -532,21 +593,50 @@
 <div class="case-links" style="margin-top:12px"><a href="https://www.youtube.com/watch?v=mJEVoEEW0pQ" rel="noopener" target="_blank">YouTube</a><a href="https://t-j.ru/list/ne-otkrivai-bar/" rel="noopener" target="_blank">Т—Ж</a><a href="https://m.sobaka.ru/bars/heroes/182553" rel="noopener" target="_blank">Sobaka.ru</a><a href="https://ru.inshaker.com/trends/znaniya/vitaliy-ekimenko-vremya-samyy-tsennyy-nash-resurs-kotorogo-postoyanno-ne-hvataet" rel="noopener" target="_blank">Inshaker</a><a href="https://moskvichmag.ru/tag/vitalij-ekimenko/" rel="noopener" target="_blank">Moskvich Mag</a></div>
 </div></section>
 <section class="section" id="application"><div class="wrap">
-<div class="eyebrow">Короткая заявка</div>
+<div class="eyebrow">Заявка на разбор</div>
 <h2>Расскажите, что происходит с проектом.</h2>
-<p class="lead">Заполните форму — затем вы перейдёте в Telegram и отправите готовую заявку одним нажатием.</p>
+<p class="lead">Заполните короткую форму. Заявка придёт Виталию лично на почту — без менеджеров и автоматической рассылки.</p>
 <div class="form-card">
-<form id="leadForm">
-<div class="field"><label for="name">Имя</label><input id="name" name="name" placeholder="Как к вам обращаться" required=""/></div>
-<div class="field"><label for="contact">Telegram или телефон</label><input id="contact" name="contact" placeholder="@username или +7…" required=""/></div>
-<div class="field"><label for="city">Город</label><input id="city" name="city" required=""/></div>
-<div class="field"><label for="project">Название и формат проекта</label><input id="project" name="project" placeholder="Бар, ресторан, кофейня, будущий проект…" required=""/></div>
-<div class="field"><label for="status">Статус</label><select id="project-status" name="status"><option>Проект уже работает</option><option>Готовится к открытию</option></select></div>
-<div class="field" id="revenue-field"><label for="revenue">Среднемесячная выручка</label><select id="revenue" name="revenue"><option value="">Выберите диапазон</option><option>До 3 млн ₽</option><option>3–7 млн ₽</option><option>7–15 млн ₽</option><option>15 млн ₽ и выше</option></select></div>
-<div class="field"><label for="problem">Главная проблема</label><textarea id="problem" name="problem" placeholder="Что сейчас больше всего мешает проекту?" required=""></textarea></div>
-<div class="field"><label for="link">Ссылка на сайт, соцсети или презентацию</label><input id="link" name="link" placeholder="https://"/></div>
-<button class="btn btn-primary" type="submit">Отправить заявку Виталию</button><p id="telegram-copy-notice" class="telegram-notice" hidden>Заявка скопирована. Вставьте её в Telegram и отправьте Виталию.</p>
-<p class="form-note">Отправляя заявку, вы соглашаетесь на обработку указанных данных для связи по вопросу разбора проекта.</p>
+<form id="leadForm"
+      action="https://formsubmit.co/ekimka.vitalik@gmail.com"
+      data-ajax-endpoint="https://formsubmit.co/ajax/ekimka.vitalik@gmail.com"
+      method="POST"
+      novalidate>
+<input id="form-subject" name="_subject" type="hidden" value="Новая заявка на разбор HoReCa-проекта"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_next" type="hidden" value="https://ekimka88.github.io/links/?submitted=1#application"/>
+<input class="form-honeypot" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" type="text"/>
+<input id="lead-id" name="ID заявки" type="hidden"/>
+<input id="submitted-at" name="Дата и время заявки" type="hidden"/>
+<input id="lead-source" name="Источник" type="hidden" value="Сайт Виталия Екименко"/>
+<input id="page-url" name="Страница" type="hidden"/>
+<input id="referrer" name="Источник перехода" type="hidden"/>
+<input id="utm-source" name="UTM source" type="hidden"/>
+<input id="utm-medium" name="UTM medium" type="hidden"/>
+<input id="utm-campaign" name="UTM campaign" type="hidden"/>
+<input id="utm-content" name="UTM content" type="hidden"/>
+<input id="utm-term" name="UTM term" type="hidden"/>
+<input id="timezone" name="Часовой пояс" type="hidden"/>
+<input id="device" name="Устройство" type="hidden"/>
+<input id="form-version" name="Версия формы" type="hidden" value="2.0 — email"/>
+
+<div class="field"><label for="name">Имя</label><input autocomplete="name" id="name" name="Имя" placeholder="Как к вам обращаться" required="" type="text"/></div>
+<div class="field"><label for="contact">Telegram или телефон</label><input id="contact" name="Контакт (Telegram или телефон)" placeholder="@username или +7…" required="" type="text"/></div>
+<div class="field"><label for="email">Email <span style="color:var(--muted2);font-weight:500">— необязательно</span></label><input autocomplete="email" id="email" name="email" placeholder="name@example.com" type="email"/></div>
+<div class="field"><label for="city">Город</label><input autocomplete="address-level2" id="city" name="Город" required="" type="text"/></div>
+<div class="field"><label for="project">Название и формат проекта</label><input id="project" name="Проект" placeholder="Бар, ресторан, кофейня, будущий проект…" required="" type="text"/></div>
+<div class="field"><label for="project-status">Статус</label><select id="project-status" name="Статус проекта"><option>Проект уже работает</option><option>Готовится к открытию</option></select></div>
+<div class="field" id="revenue-field"><label for="revenue">Среднемесячная выручка</label><select id="revenue" name="Среднемесячная выручка"><option value="">Выберите диапазон</option><option>До 3 млн ₽</option><option>3–7 млн ₽</option><option>7–15 млн ₽</option><option>15 млн ₽ и выше</option></select></div>
+<div class="field"><label for="problem">Главная проблема</label><textarea id="problem" name="Главная проблема" placeholder="Что сейчас больше всего мешает проекту?" required=""></textarea></div>
+<div class="field"><label for="link">Ссылка на сайт, соцсети или презентацию</label><input id="link" inputmode="url" name="Ссылка" placeholder="https://" type="url"/></div>
+
+<button class="btn btn-primary submit-btn" id="submit-button" type="submit">
+<span class="button-label">Отправить заявку на разбор</span>
+<span class="button-loader" hidden="" aria-hidden="true"></span>
+</button>
+<div class="form-status" id="form-status" hidden="" role="status" aria-live="polite"></div>
+<p class="form-trust">Данные используются только для связи по заявке. В письмо также автоматически добавятся источник перехода и рекламные метки, чтобы заявки не терялись.</p>
 </form>
 </div>
 </div></section>
@@ -562,7 +652,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const statusSelect = document.getElementById('project-status');
   const revenueField = document.getElementById('revenue-field');
   const revenueSelect = document.getElementById('revenue');
-  const notice = document.getElementById('telegram-copy-notice');
+  const submitButton = document.getElementById('submit-button');
+  const buttonLabel = submitButton ? submitButton.querySelector('.button-label') : null;
+  const buttonLoader = submitButton ? submitButton.querySelector('.button-loader') : null;
+  const formStatus = document.getElementById('form-status');
+  const formSubject = document.getElementById('form-subject');
+  const initialButtonText = buttonLabel ? buttonLabel.textContent : 'Отправить заявку на разбор';
 
   function updateRevenueField() {
     if (!statusSelect || !revenueField || !revenueSelect) return;
@@ -571,9 +666,90 @@ document.addEventListener('DOMContentLoaded', () => {
     revenueField.hidden = isPreOpening;
     revenueSelect.required = !isPreOpening;
 
-    if (isPreOpening) {
-      revenueSelect.value = '';
+    if (isPreOpening) revenueSelect.value = '';
+  }
+
+  function setFieldValue(id, value) {
+    const field = document.getElementById(id);
+    if (field) field.value = value || '';
+  }
+
+  function createLeadId() {
+    const now = new Date();
+    const stamp = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      String(now.getDate()).padStart(2, '0'),
+      String(now.getHours()).padStart(2, '0'),
+      String(now.getMinutes()).padStart(2, '0'),
+      String(now.getSeconds()).padStart(2, '0')
+    ].join('');
+    const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return `VE-${stamp}-${suffix}`;
+  }
+
+  function fillTrackingFields() {
+    const params = new URLSearchParams(window.location.search);
+    const now = new Date();
+
+    setFieldValue('lead-id', createLeadId());
+    setFieldValue('submitted-at', new Intl.DateTimeFormat('ru-RU', {
+      dateStyle: 'full',
+      timeStyle: 'long'
+    }).format(now));
+    setFieldValue('page-url', window.location.href);
+    setFieldValue('referrer', document.referrer || 'Прямой переход');
+    setFieldValue('utm-source', params.get('utm_source'));
+    setFieldValue('utm-medium', params.get('utm_medium'));
+    setFieldValue('utm-campaign', params.get('utm_campaign'));
+    setFieldValue('utm-content', params.get('utm_content'));
+    setFieldValue('utm-term', params.get('utm_term'));
+    setFieldValue('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+    setFieldValue('device', `${navigator.userAgent} | ${window.innerWidth}×${window.innerHeight}`);
+  }
+
+  function setLoading(isLoading) {
+    if (!submitButton) return;
+    submitButton.disabled = isLoading;
+    submitButton.setAttribute('aria-busy', String(isLoading));
+
+    if (buttonLabel) {
+      buttonLabel.textContent = isLoading ? 'Отправляем заявку…' : initialButtonText;
     }
+    if (buttonLoader) buttonLoader.hidden = !isLoading;
+  }
+
+  function showStatus(state, message) {
+    if (!formStatus) return;
+    formStatus.dataset.state = state;
+    formStatus.innerHTML = message;
+    formStatus.hidden = false;
+    formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function showSuccess() {
+    showStatus(
+      'success',
+      '<strong>Заявка отправлена.</strong><br>Данные переданы Виталию. Он изучит проект и свяжется по указанному контакту.'
+    );
+  }
+
+  function showError() {
+    showStatus(
+      'error',
+      '<strong>Не удалось отправить заявку.</strong><br>Проверьте интернет и попробуйте ещё раз. Если ошибка повторится, напишите в <a href="https://t.me/ekimka" target="_blank" rel="noopener">Telegram @ekimka</a>.'
+    );
+  }
+
+  function showNativeSuccessFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('submitted') !== '1') return;
+
+    showSuccess();
+    params.delete('submitted');
+    const cleanQuery = params.toString();
+    const cleanUrl = `${window.location.pathname}${cleanQuery ? `?${cleanQuery}` : ''}${window.location.hash || '#application'}`;
+    window.history.replaceState({}, document.title, cleanUrl);
   }
 
   if (statusSelect) {
@@ -581,57 +757,72 @@ document.addEventListener('DOMContentLoaded', () => {
     updateRevenueField();
   }
 
-  async function copyText(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch (error) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.setAttribute('readonly', '');
-      textarea.style.position = 'fixed';
-      textarea.style.left = '-9999px';
-      document.body.appendChild(textarea);
-      textarea.select();
-      const copied = document.execCommand('copy');
-      textarea.remove();
-      return copied;
-    }
-  }
+  fillTrackingFields();
+  showNativeSuccessFromUrl();
 
   if (!form) return;
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const data = new FormData(form);
-    const status = String(data.get('status') || '');
-    const isPreOpening = status === 'Готовится к открытию';
-
-    const text = [
-      'Заявка на разбор проекта',
-      '',
-      'Имя: ' + (data.get('name') || '—'),
-      'Контакт: ' + (data.get('contact') || '—'),
-      'Город: ' + (data.get('city') || '—'),
-      'Проект: ' + (data.get('project') || '—'),
-      'Статус: ' + (status || '—'),
-      'Выручка: ' + (isPreOpening ? 'проект ещё не открыт' : (data.get('revenue') || 'не указана')),
-      'Главная проблема: ' + (data.get('problem') || '—'),
-      'Ссылка: ' + (data.get('link') || '—')
-    ].join('
-');
-
-    const copied = await copyText(text);
-
-    if (notice) {
-      notice.hidden = false;
-      notice.textContent = copied
-        ? 'Заявка скопирована. Вставьте её в Telegram и отправьте Виталию.'
-        : 'Telegram откроется сейчас. Скопируйте данные формы вручную, если текст не сохранился.';
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
     }
 
-    window.open('https://t.me/ekimka', '_blank', 'noopener');
+    const honeypot = form.querySelector('[name="_honey"]');
+    if (honeypot && honeypot.value) {
+      showSuccess();
+      form.reset();
+      updateRevenueField();
+      return;
+    }
+
+    const project = document.getElementById('project');
+    const city = document.getElementById('city');
+    if (formSubject) {
+      const projectName = project && project.value.trim() ? project.value.trim() : 'HoReCa-проект';
+      const cityName = city && city.value.trim() ? ` · ${city.value.trim()}` : '';
+      formSubject.value = `Новая заявка на разбор: ${projectName}${cityName}`;
+    }
+
+    fillTrackingFields();
+    setLoading(true);
+    if (formStatus) formStatus.hidden = true;
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 18000);
+
+    try {
+      const response = await fetch(form.dataset.ajaxEndpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+        signal: controller.signal
+      });
+
+      let payload = {};
+      try {
+        payload = await response.json();
+      } catch (_) {
+        payload = {};
+      }
+
+      if (!response.ok || payload.success === false || payload.success === 'false') {
+        throw new Error(payload.message || `HTTP ${response.status}`);
+      }
+
+      form.reset();
+      updateRevenueField();
+      fillTrackingFields();
+      showSuccess();
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      showError();
+    } finally {
+      window.clearTimeout(timeoutId);
+      setLoading(false);
+    }
   });
 });
 </script>
