@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -606,6 +605,7 @@
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
 <input name="_next" type="hidden" value="https://ekimka88.github.io/links/?submitted=1#application"/>
+<input name="_webhook" type="hidden" value="https://ekimenko-leads.ekimka-vitalik.workers.dev/webhook"/>
 <input class="form-honeypot" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" type="text"/>
 <input id="lead-id" name="ID заявки" type="hidden"/>
 <input id="submitted-at" name="Дата и время заявки" type="hidden"/>
@@ -619,7 +619,7 @@
 <input id="utm-term" name="UTM term" type="hidden"/>
 <input id="timezone" name="Часовой пояс" type="hidden"/>
 <input id="device" name="Устройство" type="hidden"/>
-<input id="form-version" name="Версия формы" type="hidden" value="3.0 — email + telegram"/>
+<input id="form-version" name="Версия формы" type="hidden" value="3.1 — FormSubmit email + server webhook to Telegram"/>
 
 <div class="field"><label for="name">Имя</label><input autocomplete="name" id="name" name="Имя" placeholder="Как к вам обращаться" required="" type="text"/></div>
 <div class="field"><label for="contact">Telegram или телефон</label><input id="contact" name="Контакт (Telegram или телефон)" placeholder="@username или +7…" required="" type="text"/></div>
@@ -794,59 +794,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeoutId = window.setTimeout(() => controller.abort(), 18000);
 
     try {
-      const emailRequest = fetch(form.dataset.ajaxEndpoint, {
+      const response = await fetch(form.dataset.ajaxEndpoint, {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },
         signal: controller.signal
-      }).then(async (response) => {
-        let payload = {};
-        try {
-          payload = await response.json();
-        } catch (_) {
-          payload = {};
-        }
-
-        if (!response.ok || payload.success === false || payload.success === 'false') {
-          throw new Error(payload.message || `Email HTTP ${response.status}`);
-        }
-
-        return { channel: 'email', ok: true };
       });
 
-      const telegramRequest = fetch('https://ekimenko-leads.ekimka-vitalik.workers.dev/webhook', {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-        signal: controller.signal
-      }).then(async (response) => {
-        let payload = {};
-        try {
-          payload = await response.json();
-        } catch (_) {
-          payload = {};
-        }
+      let payload = {};
+      try {
+        payload = await response.json();
+      } catch (_) {
+        payload = {};
+      }
 
-        if (!response.ok || payload.ok === false) {
-          throw new Error(payload.error || `Telegram HTTP ${response.status}`);
-        }
-
-        return { channel: 'telegram', ok: true };
-      });
-
-      const results = await Promise.allSettled([emailRequest, telegramRequest]);
-      const deliveredChannels = results
-        .filter((result) => result.status === 'fulfilled')
-        .map((result) => result.value.channel);
-
-      results.forEach((result) => {
-        if (result.status === 'rejected') {
-          console.error('Lead delivery channel failed:', result.reason);
-        }
-      });
-
-      if (!deliveredChannels.length) {
-        throw new Error('Заявка не доставлена ни по одному каналу.');
+      if (!response.ok || payload.success === false || payload.success === 'false') {
+        throw new Error(payload.message || `FormSubmit HTTP ${response.status}`);
       }
 
       form.reset();
@@ -854,7 +817,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fillTrackingFields();
       showSuccess();
     } catch (error) {
-      console.error('Form submission failed:', error);
+      console.error('FormSubmit submission failed:', error);
       showError();
     } finally {
       window.clearTimeout(timeoutId);
